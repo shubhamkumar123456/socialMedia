@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { socket } from "../socket";
 
-const useSocket = (user) => {
+const UseSocket1 = (user) => {
   const isConnected = useRef(false); // ✅ track connection
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const useSocket = (user) => {
   }, [user?._id]);
 };
 
-export default useSocket;
+export default UseSocket1;

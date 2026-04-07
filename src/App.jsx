@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 import PublicRoute from './components/PublicRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 import { ToastContainer } from 'react-toastify';
-import useSocket from './hooks/useSocket';
+import UseSocket1 from './hooks/UseSocket1';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function App() {
     }
   }, [login]);
 
-  useSocket(user);
+  UseSocket1(user);
   // useEffect(() => {
   //   console.log("useEffect", user?._id)
   //   if (user?._id) {
