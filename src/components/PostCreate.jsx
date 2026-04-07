@@ -54,6 +54,7 @@ const PostCreate = (props) => {
       // console.log("image uploaded successfully");
     inputRef.current.value = ''
     getPosts()
+    setallFiles([])
       
   }
 

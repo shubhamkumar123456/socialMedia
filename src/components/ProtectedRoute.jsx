@@ -25,19 +25,21 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const { login, isLoading, user } = useSelector((state) => state.auth);
 
-  // ⏳ wait until API completes
+  // 1. If we are globally loading (fetching token or user), show loading
   if (isLoading) {
     return <div className="text-white text-center mt-10">Loading...</div>;
   }
 
-  // ❌ not logged in
+  // 2. If the check is done and we definitely aren't logged in, redirect
   if (!login) {
     return <Navigate to="/login" replace />;
   }
 
-  // ⛔ user अभी तक load नहीं हुआ
-  if (!user?._id) {
-    return <div className="text-white text-center mt-10">Preparing user...</div>;
+  // 3. FIX: If logged in but user data is missing, we shouldn't just stay stuck.
+  // We check if user exists. If not, we show a loader while the App.js 
+  // (usually where you fetch user) does its work.
+  if (login && !user?._id) {
+    return <div className="text-white text-center mt-10">Fetching Profile...</div>;
   }
 
   return children;
