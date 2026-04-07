@@ -126,7 +126,7 @@ const PostCard = (props) => {
               className="bg-black"
             >
               {ele.media.map((file, index) => {
-                const url = `${URL}/uploads/${file}`;
+                const url = file;
                 const isVideo =
                   /\.(mp4|webm|ogg|mov|avi|mkv|flv|wmv|m4v|3gp)$/i.test(file);
 
@@ -214,7 +214,7 @@ const PostCard = (props) => {
         );
       })}
 
-{/* *****************Modal code *************** */}
+{/* *****************Modal code ************* */}
       
       <Modal
         title="Comments"
