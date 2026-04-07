@@ -8,24 +8,31 @@ import PostCard from '../../components/PostCard'
 const Home = () => {
 
     const [allPosts, setAllPosts] = useState([]);
+    console.log(URL)
   
 
  
   const getUser = useSelector((state) => state.auth)
-  console.log(getUser.user._id)
+  // console.log(getUser.user._id)
 
 
  
 
 
   const getPosts = async () => {
-    let res = await fetch(URL + "/api/posts/allPost", {
-      method: "get",
-      headers: { "Content-Type": "application/json" },
+    try {
+      let res = await fetch(URL + "/api/posts/allPost", {
+      method: "GET",
+      headers:{'content-type':'application/json'},
       credentials: "include",
     });
     let ans = await res.json();
+    console.log(ans)
     setAllPosts(ans);
+
+    } catch (error) {
+      console.log(error.message)
+    }
   };
 
   useEffect(()=>{

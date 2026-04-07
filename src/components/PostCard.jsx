@@ -94,7 +94,7 @@ const PostCard = (props) => {
 
   return (
     <div className="space-y-6">
-      {allPosts.map((ele,i) => {
+      {allPosts?.map((ele,i) => {
         return (
           <div
             key={ele._id}
