@@ -54,7 +54,7 @@ if(response.ok){
       {/* LEFT */}
       <div className="text-center md:text-left">
         <h1 className="text-blue-500 text-5xl font-bold mb-3">
-          facebook
+          Social Media
         </h1>
         <p className="text-gray-300 text-xl max-w-md">
           Join Facebook and connect with friends around the world.

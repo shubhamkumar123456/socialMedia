@@ -56,7 +56,7 @@ const Login = () => {
       {/* LEFT SECTION */}
       <div className="text-center md:text-left">
         <h1 className="text-blue-500 text-5xl font-bold mb-3">
-          facebook
+          Social Media
         </h1>
         <p className="text-gray-300 text-xl max-w-md">
           Connect with friends and the world around you on Facebook.

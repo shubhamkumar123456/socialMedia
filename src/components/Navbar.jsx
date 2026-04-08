@@ -256,7 +256,7 @@ const Navbar = () => {
   const [toggler, settoggler] = useState(false);
   const [users, setUsers] = useState([]);
   
-  const firends = useSelector((state) => state.auth.searchFriend) || [];
+  const login = useSelector((state) => state.auth.login)
   const user = useSelector((state) => state.auth.user)
 
   const dispatch = useDispatch();
@@ -269,6 +269,20 @@ const Navbar = () => {
     dispatch(logoutUser());
   }
 
+
+    const handleUserSearch = async(e) => {
+    let name = e.target.value;
+    let res =await fetch(`${URL}/api/users/searchUsers?name=${name}`, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    let data = await res.json();
+    console.log(data)
+    setUsers(data.users)
+  }
   return (
     <div className="bg-[#242526] fixed text-white flex items-center justify-between px-3 py-3 right-0 left-0 top-0 z-50 shadow-md">
       
@@ -278,7 +292,7 @@ const Navbar = () => {
       </Link>
 
       {/* CENTER - SEARCH (Responsive width) */}
-      <div className="flex-1 flex justify-center px-2 relative">
+     {login && <div className="flex-1 flex justify-center px-2 relative">
         <div className="flex relative items-center bg-[#3a3b3c] px-3 py-1.5 rounded-full w-full max-w-[250px] md:max-w-md">
           <input
             onChange={handleUserSearch}
@@ -306,7 +320,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-      </div>
+      </div>}
 
       {/* RIGHT - DESKTOP ICONS (Hidden on mobile) */}
       <div className="hidden md:flex items-center gap-2">
@@ -328,17 +342,19 @@ const Navbar = () => {
           />
           {toggler && (
             <div className="absolute right-0 top-11 bg-[#242526] w-40 rounded-lg shadow-xl border border-gray-700 overflow-hidden">
-              <Link to="/profile" onClick={() => settoggler(false)} className="block p-3 hover:bg-[#3a3b3c] text-sm">Profile</Link>
-              <p onClick={handleLogout} className="p-3 hover:bg-[#3a3b3c] cursor-pointer text-sm text-red-400">Logout</p>
+              {login &&<Link to="/profile" onClick={() => settoggler(false)} className="block p-3 hover:bg-[#3a3b3c] text-sm">Profile</Link>}
+              {!login &&<Link to="/login" onClick={() => settoggler(false)} className="block p-3 hover:bg-[#3a3b3c] text-sm">Login</Link>}
+              {!login &&<Link to="/signup" onClick={() => settoggler(false)} className="block p-3 hover:bg-[#3a3b3c] text-sm">Signup</Link>}
+              {login &&<p onClick={handleLogout} className="p-3 hover:bg-[#3a3b3c] cursor-pointer text-sm text-red-400">Logout</p>}
             </div>
           )}
         </div>
 
         {/* Mobile Menu Icon */}
-        <HiMenu 
+       {login && <HiMenu 
           onClick={() => setshowResponsive(!showResponsive)} 
           className="text-2xl md:hidden cursor-pointer hover:text-blue-500 transition" 
-        />
+        />}
       </div>
 
       {/* MOBILE NAV DROPDOWN */}
