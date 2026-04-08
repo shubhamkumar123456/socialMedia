@@ -33,6 +33,7 @@ const Login = () => {
       // console.log(data);
       if (response.ok) {
         dispatch(loginUser())
+        
       }
       else{
         seterrMsg(data.msg)
