@@ -1,5 +1,5 @@
-// import { useEffect, useRef } from "react";
-// import { socket } from "../socket";
+import { useEffect, useRef } from "react";
+import { socket } from "../socket";
 
 // const UseSocket1 = (user) => {
 //   const isConnected = useRef(false); // ✅ track connection
