@@ -27,7 +27,7 @@ function App() {
   console.log(login)
 
   useEffect(() => {
-    if (!login) {
+    if (login && !user?._id) {
       dispatch(fetchUser());
     }
   }, [login]);
