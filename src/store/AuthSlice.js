@@ -3,7 +3,7 @@ import URL from "../getUrl";
 
 const initialState = {
   user: {},
-  login: false,
+  login:localStorage.getItem('login') || false,
   isLoading: false,
   isError: false,
   searchFriend: [],
@@ -69,10 +69,12 @@ export const AuthSlice = createSlice({
 
     loginUser: (state, action) => {
       // ✅ No localStorage anymore
+      localStorage.setItem("login", true);
       state.login = true;
     },
 
     logoutUser: (state) => {
+      localStorage.removeItem("login");
       state.login = false;
       state.user = {};
     },

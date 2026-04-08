@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PublicRoute = ({ children }) => {
-  const { login } = useSelector((state) => state.auth);
+  const { login } = useSelector((state) => state.auth) 
 
   if (login) {
     return <Navigate to="/" replace />;
