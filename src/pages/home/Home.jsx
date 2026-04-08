@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import FriendList from '../../components/FriendList'
-import './home.css'
 import { useSelector } from 'react-redux'
 import PostCreate from '../../components/PostCreate'
 import URL from '../../getUrl'
@@ -38,39 +37,40 @@ const Home = () => {
   useEffect(()=>{
     getPosts()
   },[])
-  return (
-    <div className="min-h-screen bg-[#18191a] text-white flex justify-center">
+ return (
+  <div className="min-h-screen w-full bg-[#18191a] text-white flex justify-center overflow-x-hidden">
 
-  {/* MAIN WRAPPER */}
-  <div className="w-full max-w-6xl flex gap-6 px-3 mt-4">
+    {/* MAIN WRAPPER: Responsive gap and padding */}
+    <div className="w-full max-w-6xl flex gap-0 md:gap-6 px-2 md:px-3 mt-4">
 
-    {/* LEFT / FRIEND LIST */}
-    <div className="hidden md:block  w-1/4">
-      <div className="sticky top-20  ">
-        <FriendList />
+      {/* LEFT SIDE: Hidden on mobile, 25% on desktop */}
+      <div className="hidden md:block w-1/4">
+        <div className="sticky top-20">
+          <FriendList />
+        </div>
       </div>
-    </div>
 
-    {/* CENTER FEED */}
-    <div className="flex-1 flex flex-col items-center">
-      <div className="w-full max-w-xl space-y-4">
-        <PostCreate getPosts={getPosts} />
-
-        <PostCard allPosts={allPosts} setAllPosts={setAllPosts} getPosts={getPosts} />
-     
+      {/* CENTER FEED: Takes full width on mobile */}
+      <div className="flex-1 w-full flex flex-col items-center">
+        {/* Container for feed items */}
+        <div className="w-full max-w-xl space-y-4">
+          <PostCreate getPosts={getPosts} />
+          <PostCard 
+            allPosts={allPosts} 
+            setAllPosts={setAllPosts} 
+            getPosts={getPosts} 
+          />
+        </div>
       </div>
-    </div>
 
-    {/* RIGHT SIDE (optional future) */}
-    <div className="hidden lg:block w-1/4">
-      {/* you can add suggestions / ads */}
-    </div>
+      {/* RIGHT SIDE: Hidden until Large screens */}
+      <div className="hidden lg:block w-1/4">
+        {/* Placeholder for future features */}
+      </div>
 
-    
-  </div>  
-  
-</div>
-  )
+    </div>   
+  </div>
+)
 }
 
 export default Home

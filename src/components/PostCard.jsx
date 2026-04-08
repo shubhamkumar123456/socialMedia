@@ -136,12 +136,12 @@ const PostCard = (props) => {
                       <video
                         src={url}
                         controls
-                        className="w-full h-[400px] object-contain"
+                        className="w-full h-auto aspect-square object-contain bg-black"
                       />
                     ) : (
                       <img
                         src={url}
-                        className="w-full h-[400px] object-contain"
+                        className="w-full h-auto aspect-square object-contain bg-black"
                       />
                     )}
                   </SwiperSlide>
@@ -199,7 +199,7 @@ const PostCard = (props) => {
                 value={inputValue}
                 placeholder="Add a comment..."
                 onChange={(e)=>setInputValue(e.target.value)}
-                className="flex-1 bg-transparent outline-none text-sm placeholder-gray-400 px-2"
+                className="flex-1 bg-transparent outline-none text-[16px] placeholder-gray-400 px-2"
               />
               <button
                 className="text-blue-500 font-semibold disabled:opacity-50 hover:text-blue-400"

@@ -105,7 +105,11 @@ const PostCreate = (props) => {
             Feeling
           </button>
             <div className="absolute top-full z-30 right-5">
-          <EmojiPicker open={emojiOpen} theme="dark" onEmojiClick={handleEmojiCLick} />
+          <EmojiPicker open={emojiOpen} 
+    theme="dark" 
+    onEmojiClick={handleEmojiCLick}
+    width="100%" // Tell the picker to fill the container
+    style={{ maxWidth: '350px' }}/> 
         </div>
         </div>
         
