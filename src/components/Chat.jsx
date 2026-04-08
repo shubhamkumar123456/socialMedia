@@ -67,12 +67,33 @@ useEffect(()=>{
 },[friendUser?._id])
 
 
-useEffect(()=>{
-    socket.on('getMessage',data=>{
-        console.log(data)
-        setMessages((prev)=>[...prev,{sender:data.senderId,text:data.text,createdAt:data.createdAt,reciever:data.recieverId}])
-    })
-},[])
+useEffect(() => {
+    // Define the handler inside to keep it clean
+    const messageHandler = (data) => {
+        console.log("New message received via socket:", data);
+        
+        // Check if the message is actually for this specific chat window
+        // This prevents messages from "User C" appearing in "User B's" chat
+        if (data.senderId === friendUser._id || data.recieverId === friendUser._id) {
+            setMessages((prev) => [
+                ...prev, 
+                {
+                    sender: data.senderId,
+                    text: data.text,
+                    createdAt: data.createdAt,
+                    reciever: data.recieverId
+                }
+            ]);
+        }
+    };
+
+    socket.on('getMessage', messageHandler);
+
+    // ✅ CLEANUP: This stops duplicate listeners!
+    return () => {
+        socket.off('getMessage', messageHandler);
+    };
+}, [friendUser._id]); // Re-run if the friend you are chatting with changes
 
 
   return (
