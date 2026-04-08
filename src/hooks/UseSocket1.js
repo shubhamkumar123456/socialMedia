@@ -53,3 +53,5 @@ const UseSocket1 = (user) => {
     };
   }, [user?._id]);
 };
+
+export default UseSocket1;
