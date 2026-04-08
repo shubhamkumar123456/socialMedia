@@ -4,7 +4,7 @@ import URL from "../getUrl";
 const initialState = {
   user: {},
   login: false,
-  isLoading: true,
+  isLoading: false,
   isError: false,
   searchFriend: [],
 };
