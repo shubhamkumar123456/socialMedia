@@ -288,7 +288,7 @@ const Navbar = () => {
       
       {/* LEFT - LOGO */}
       <Link to="/" className="text-blue-500 text-2xl font-bold flex-shrink-0">
-        f
+        SocialBook
       </Link>
 
       {/* CENTER - SEARCH (Responsive width) */}
@@ -323,14 +323,14 @@ const Navbar = () => {
       </div>}
 
       {/* RIGHT - DESKTOP ICONS (Hidden on mobile) */}
-      <div className="hidden md:flex items-center gap-2">
+      {login &&<div className="hidden md:flex items-center gap-2">
         <Link to="/" className="p-2 bg-[#3a3b3c] rounded-full hover:bg-[#4e4f50]"><AiFillHome className="text-xl" /></Link>
         <Link to="/followers" className="p-2 bg-[#3a3b3c] rounded-full hover:bg-[#4e4f50]"><FaUserFriends className="text-xl" /></Link>
         <div className="relative p-2 bg-[#3a3b3c] rounded-full hover:bg-[#4e4f50] cursor-pointer">
           <BsMessenger className="text-xl" />
           <span className="absolute -top-1 -right-1 bg-red-500 text-[10px] px-1 rounded-full">3</span>
         </div>
-      </div>
+      </div>}
 
       {/* USER PROFILE & MOBILE TOGGLE */}
       <div className="flex items-center gap-2 ml-2">
